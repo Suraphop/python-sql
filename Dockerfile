@@ -1,8 +1,13 @@
 FROM python:3.8-slim-buster
+
+COPY crontab /etc/cron.d/crontab
+RUN /usr/bin/crontab /etc/cron.d/crontab
+
 WORKDIR /app
 COPY requirements.txt requirements.txt
 
 RUN apt-get update && apt-get install -y gnupg2 curl
+RUN apt-get install -y cron
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 RUN curl https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list
 
@@ -22,4 +27,5 @@ RUN pip3 install -r requirements.txt
 
 COPY . .
 
-CMD [ "python3", "-m" , "test", "run", "--host=0.0.0.0"]
+#CMD [ "python3", "-m" , "test", "run", "--host=0.0.0.0"]
+CMD ["cron","-f"]
