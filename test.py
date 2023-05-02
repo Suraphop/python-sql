@@ -4,7 +4,7 @@ from sqlalchemy import create_engine,text,engine
 
 print('start')
 
-server = '192.168.100.11\SQLEXPRESS'
+server = '192.168.1.16\SQLEXPRESS'
 database = 'test'
 user_login = 'sa'
 password = 'sa@admin'
