@@ -1,6 +1,6 @@
 import pymssql
 print('start')
-conn = pymssql.connect('192.168.100.73', 'sa', 'sa@admin', "test")
+conn = pymssql.connect('192.168.100.11\SQLEXPRESS', 'sa', 'sa@admin', "test")
 
 cursor = conn.cursor()
 
